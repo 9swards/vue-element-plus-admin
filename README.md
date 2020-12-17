@@ -2,7 +2,7 @@
 
 _**WIP**_
 
-migrate from vue-element-admin to vue-elememt-plus-admin with `vue3` and `element-plus`
+migrate from `vue-element-admin` to `vue-elememt-plus-admin` with `vue3` and `element-plus`
 
 see: [PanJiaChen/vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 ## Project setup
