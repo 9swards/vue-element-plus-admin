@@ -6,9 +6,9 @@ import router from './router'
 import store from './store'
 
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+import '@/router/permission' // permission control
 import '@/styles/index.scss' // global css
-import './icons' // icon
-
+import '@/icons' // icon
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

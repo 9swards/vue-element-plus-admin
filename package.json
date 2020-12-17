@@ -13,6 +13,7 @@
     "element-plus": "^1.0.1-beta.8",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "vue": "^3.0.4",
     "vue-router": "^4.0.1",
     "vuex": "^4.0.0-rc.2"
@@ -35,7 +36,8 @@
     "lint-staged": "^10.5.3",
     "mockjs": "^1.1.0",
     "node-sass": "^5.0.0",
-    "sass-loader": "^10.1.0"
+    "sass-loader": "^10.1.0",
+    "svg-sprite-loader": "^5.2.1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

@@ -1,6 +1,7 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <sidebar class="sidebar-container" />
     <div :class="{hasTagsView:needTagsView}" class="main-container">
       <app-main />
     </div>
@@ -8,13 +9,13 @@
 </template>
 
 <script>
-import { AppMain } from './components'
+import { AppMain, Sidebar } from './components'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Layout',
   components: {
-    AppMain
+    AppMain, Sidebar
   },
   computed: {
     ...mapState({
