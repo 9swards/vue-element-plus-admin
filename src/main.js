@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import installElementPlus from '@/plugins/element-plus'
 import installIcons from '@/plugins/icons.js'
+import installErrorHandler from './utils/error-log' // error log
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -25,6 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
+installErrorHandler(app)
 app
   .use(store)
   .use(router)
