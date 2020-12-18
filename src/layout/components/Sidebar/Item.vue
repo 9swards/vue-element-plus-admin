@@ -1,9 +1,9 @@
 <script>
 import { h } from 'vue'
 
-const MenuItem = (props, context) => {
+const SidebarMenuItem = (props, context) => {
   const { icon, title } = props
-  return h('div', context.attrs,
+  return h('span', context.attrs,
     [
       icon.includes('el-icon') ? <i className={[icon, 'sub-el-icon']}/> : <svg-icon icon-class={icon}/>,
       title ? <span slot='title'>{(title)}</span> : ''
@@ -11,9 +11,9 @@ const MenuItem = (props, context) => {
   )
 }
 
-MenuItem.props = ['icon', 'title']
+SidebarMenuItem.props = ['icon', 'title']
 
-export default MenuItem
+export default SidebarMenuItem
 </script>
 
 <style scoped>
