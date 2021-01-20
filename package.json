@@ -1,6 +1,7 @@
 {
   "name": "vue-element-plus-admin",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck vue-element-plus-admin && vite build"
@@ -10,6 +11,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.0.4",
+    "@vitejs/plugin-vue-jsx": "^1.0.2",
     "@vue/compiler-sfc": "^3.0.5",
     "@vuedx/typecheck": "^0.4.1",
     "@vuedx/typescript-plugin-vue": "^0.4.1",
