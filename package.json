@@ -7,6 +7,7 @@
     "build": "vuedx-typecheck vue-element-plus-admin && vite build"
   },
   "dependencies": {
+    "element-plus": "^1.0.1-beta.27",
     "vue": "^3.0.5"
   },
   "devDependencies": {

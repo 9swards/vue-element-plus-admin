@@ -1,16 +1,13 @@
 <template>
-  <img alt="Vue logo" src="src/assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <el-alert title="element plus" description="element plus + vite + vue3"></el-alert>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
   }
 })
 </script>
