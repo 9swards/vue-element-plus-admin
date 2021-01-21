@@ -5,14 +5,15 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
+
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -22,7 +23,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'vue/custom-event-name-casing': 'off',
     'no-use-before-define': 'off',
-    // 'no-use-before-define': [
+    // 'no-setting-before-define': [
     //   'error',
     //   {
     //     functions: false,
@@ -30,7 +31,7 @@ module.exports = {
     //   },
     // ],
     '@typescript-eslint/no-use-before-define': 'off',
-    // '@typescript-eslint/no-use-before-define': [
+    // '@typescript-eslint/no-setting-before-define': [
     //   'error',
     //   {
     //     functions: false,
@@ -45,18 +46,16 @@ module.exports = {
       'error',
       {
         argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
+        varsIgnorePattern: '^h$',
+      },
     ],
     'no-unused-vars': [
       'error',
       {
         argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
+        varsIgnorePattern: '^h$',
+      },
     ],
     'space-before-function-paren': 'off',
-    quotes: ['error', 'single'],
-    'comma-dangle': ['error', 'never']
-  }
-};
+  },
+}

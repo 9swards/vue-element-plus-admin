@@ -1,7 +1,12 @@
-export interface State {
-    title: string;
-}
+import { VuexModule, getModule, Module } from 'vuex-module-decorators'
+import store from '/@/store'
 
-export const state: State = {
-    title: 'Vue(v3) 与 tsx 的结合~',
-}
+import { hotModuleUnregisterModule } from '/@/utils/helper/vuexHelper'
+
+const NAME = 'app'
+hotModuleUnregisterModule(NAME)
+
+@Module({ dynamic: true, namespaced: true, store, name: NAME })
+class App extends VuexModule {}
+
+export const appStore = getModule<App>(App)

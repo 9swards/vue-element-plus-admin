@@ -1,16 +1,13 @@
 <template>
-  <div>
-    111
-  </div>
-
+  <div> 111 </div>
 </template>
 
-<script>
-export default {
-  name: "LoginIndex"
-}
+<script lang="ts">
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
+    name: 'LoginIndex',
+  })
 </script>
 
-<style scoped>
-
-</style>
+<style lang="scss" scoped></style>

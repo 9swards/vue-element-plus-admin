@@ -1,27 +1,38 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw, RouterHistory} from 'vue-router'
-import Layout from '../layout'
+import type { App } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import { scrollBehavior } from '/@/router/scrollBehavior'
+import { basicRoutes } from '/@/router/routes'
+import { createGuard } from '/@/router/guard'
+import { REDIRECT_NAME } from '/@/router/routes'
 
-export const constantRoutes: RouteRecordRaw[] = [
-    {
-        component: Layout,
-        path: '/',
-        name: 'Home'
-    }
-]
-
-export const asyncRoutes: RouteRecordRaw[] = []
-const history: RouterHistory = createWebHashHistory(process.env.BASE_URL)
+// app router
 const router = createRouter({
-    history: createWebHashHistory(process.env.BASE_URL),
-    routes: constantRoutes
+  history: createWebHashHistory(),
+  routes: basicRoutes as RouteRecordRaw[],
+  strict: true,
+  scrollBehavior: scrollBehavior,
 })
 
-export default router
-
+// reset router
 export function resetRouter() {
-    const newRouter = createRouter({
-        history,
-        routes: constantRoutes
-    })
-    router.matcher = newRouter.matcher // reset router
+  const resetWhiteNameList = ['Login', REDIRECT_NAME]
+  router.getRoutes().forEach((route) => {
+    const { name } = route
+    if (name && !resetWhiteNameList.includes(name as string)) {
+      router.hasRoute(name) && router.removeRoute(name)
+    }
+  })
 }
+
+// config router
+export function setupRouter(app: App<Element>) {
+  app.use(router)
+  createGuard(router)
+}
+
+// router.onError((error) => {
+//   console.error(error);
+// });
+
+export default router

@@ -1,14 +1,15 @@
-import {createApp} from 'vue'
-import App from './App'
-import installEle from './plugins/element-plus'
-
-import '@/styles/index.scss' // global css
-import router from './router'
-import store from './store'
+import { createApp } from 'vue'
+import App from '/@/App.vue'
+import router, { setupRouter } from '/@/router'
+import { setupStore } from '/@/store'
+import { registerGlobComp } from '/@/components/registerGlobComp'
 
 const app = createApp(App)
-installEle(app)
-app
-    .use(store)
-    .use(router)
-    .mount('#app')
+
+registerGlobComp(app)
+setupRouter(app)
+setupStore(app)
+
+router.isReady().then(() => {
+  app.mount('#app', true)
+})

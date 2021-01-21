@@ -4,10 +4,10 @@ module.exports = {
   useTabs: false,
   semi: false, // 未尾逗号
   vueIndentScriptAndStyle: true,
-  singleQuote: true, // 单引号
+  singleQuote: true,
   quoteProps: 'as-needed',
   bracketSpacing: true,
-  trailingComma: 'none', // 未尾分号
+  trailingComma: 'es5',
   jsxBracketSameLine: false,
   jsxSingleQuote: false,
   arrowParens: 'always',
@@ -15,5 +15,14 @@ module.exports = {
   requirePragma: false,
   proseWrap: 'never',
   htmlWhitespaceSensitivity: 'strict',
-  endOfLine: 'lf'
+  endOfLine: 'lf',
+  rangeStart: 0,
+  overrides: [
+    {
+      files: '*.md',
+      options: {
+        tabWidth: 2,
+      },
+    },
+  ],
 }

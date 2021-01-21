@@ -1,11 +1,16 @@
-import {createStore} from 'vuex'
-import getters from './getters'
+import type { App } from 'vue'
+import { createStore } from 'vuex'
+import { config } from 'vuex-module-decorators'
 
-export default createStore({
-    state: {},
-    mutations: {},
-    actions: {},
-    getters,
-    modules
+config.rawError = true
+
+const store = createStore({
+  // modules: {},
+  // plugins,
 })
 
+export function setupStore(app: App<Element>) {
+  app.use(store)
+}
+
+export default store
