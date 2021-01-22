@@ -1,4 +1,13 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
+import {registerGlobComp} from "./components/installGlobalComponent"
+import {installRouter} from "@/routers";
+import {installStore} from "@/stores";
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+registerGlobComp(app)
+installRouter(app)
+installStore(app)
+
+app.mount('#app')
