@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'vue/custom-event-name-casing': 'off',
+    'vue/max-attributes-per-line': 'off',
     'no-use-before-define': 'off',
     // 'no-setting-before-define': [
     //   'error',

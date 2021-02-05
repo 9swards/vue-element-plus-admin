@@ -1,7 +1,7 @@
-import { resolve } from 'path'
+import { resolve } from 'path';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 function pathResolve(dir: string) {
   return resolve(__dirname, '.', dir);
@@ -9,7 +9,7 @@ function pathResolve(dir: string) {
 
 export default defineConfig({
   alias: {
-    '@': `${pathResolve('src')}`
+    '@': `${pathResolve('src')}`,
   },
-  plugins: [vue()]
-})
+  plugins: [vue()],
+});
