@@ -1,4 +1,4 @@
-import { basicRoutes } from './basicRoutes'
-import {AppRouteRecordRaw} from "@/routers/types";
+import { basicRoutes } from './basicRoutes';
+import { AppRouteRecordRaw } from '@/routers/types';
 
-export const baseRoutes: AppRouteRecordRaw[] = [...basicRoutes]
+export const baseRoutes: AppRouteRecordRaw[] = [...basicRoutes];

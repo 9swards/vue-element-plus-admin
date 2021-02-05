@@ -1,5 +1,5 @@
 import { AppRouteModule } from '@/routers/types';
-
+import Layout from '@/layout/index.vue';
 export const basicRoutes: AppRouteModule[] = [
   {
     path: '/login',
@@ -9,6 +9,25 @@ export const basicRoutes: AppRouteModule[] = [
       title: 'Login',
       ignoreAuth: true,
     },
+  },
+  {
+    path: '/',
+    name: 'Home',
+    redirect: '/dashboard',
+    component: Layout,
+    meta: {
+      title: 'Home',
+    },
+    children: [
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: {
+          title: 'dashboard',
+        },
+      },
+    ],
   },
 ];
 
