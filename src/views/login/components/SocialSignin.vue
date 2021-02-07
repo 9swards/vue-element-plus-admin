@@ -1,11 +1,15 @@
 <template>
   <div class="social-signup-container">
     <div class="sign-btn" @click="wechatHandleClick('wechat')">
-      <span class="wx-svg-container"><svg-icon icon-class="wechat" class="icon" /></span>
+      <span class="wx-svg-container">
+        <Iconify icon="ant-design:wechat-outlined" style="font-size: 24px; color: white" />
+      </span>
       WeChat
     </div>
     <div class="sign-btn" @click="tencentHandleClick('tencent')">
-      <span class="qq-svg-container"><svg-icon icon-class="qq" class="icon" /></span>
+      <span class="qq-svg-container">
+        <Iconify icon="ant-design:qq-outlined" style="font-size: 24px; color: white" />
+      </span>
       QQ
     </div>
   </div>
@@ -16,10 +20,10 @@
   export default defineComponent({
     name: 'SocialSignin',
     methods: {
-      wechatHandleClick(thirdPart) {
+      wechatHandleClick(thirdPart: any) {
         alert(thirdPart);
       },
-      tencentHandleClick(thirdPart) {
+      tencentHandleClick(thirdPart: any) {
         alert(thirdPart);
       },
     },
@@ -28,10 +32,12 @@
 
 <style lang="scss" scoped>
   .social-signup-container {
+    display: flex;
     margin: 20px 0;
     .sign-btn {
-      display: inline-block;
+      display: flex;
       cursor: pointer;
+      align-items: center;
     }
     .icon {
       color: #fff;
@@ -40,15 +46,13 @@
     }
     .wx-svg-container,
     .qq-svg-container {
-      display: inline-block;
+      display: flex;
       width: 40px;
       height: 40px;
-      line-height: 40px;
-      text-align: center;
-      padding-top: 1px;
+      justify-content: center;
+      align-items: center;
       border-radius: 4px;
-      margin-bottom: 20px;
-      margin-right: 5px;
+      margin-right: 10px;
     }
     .wx-svg-container {
       background-color: #24da70;

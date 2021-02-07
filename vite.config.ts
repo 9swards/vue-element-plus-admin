@@ -12,4 +12,7 @@ export default defineConfig({
     '@': `${pathResolve('src')}`,
   },
   plugins: [vue()],
+  optimizeDeps: {
+    include: ['axios', 'mockjs'],
+  },
 });

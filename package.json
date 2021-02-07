@@ -4,7 +4,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vuedx-typecheck vue-element-plus-admin && vite build"
+    "svgo": "svgo -f src/components/SvgIcon/icons/svg --config=src/components/SvgIcon/icons/svgo.yml",
+    "build": "vite build",
+    "lint": "eslint --ext .ts,.js,.vue src",
+    "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -17,23 +22,28 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@iconify-icons/mdi-light": "^1.1.0",
+    "@iconify/json": "^1.1.299",
+    "@iconify/vue": "^2.0.0-rc.2",
     "@ls-lint/ls-lint": "^1.9.2",
+    "@types/mockjs": "^1.0.3",
     "@types/node": "^14.14.25",
+    "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
-    "@vuedx/typecheck": "^0.6.3",
-    "@vuedx/typescript-plugin-vue": "^0.6.3",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
+    "mockjs": "^1.1.0",
     "pinst": "^2.1.4",
     "prettier": "^2.2.1",
     "sass": "^1.32.6",
+    "svgo": "^1.3.2",
     "typescript": "^4.1.3",
     "vite": "^2.0.0-beta.64"
   },
@@ -44,10 +54,12 @@
     }
   },
   "lint-staged": {
-    "*.{.ts,.tsx}": [
-      "prettier --write",
-      "eslint --cache --fix",
-      "git add"
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
     ]
   },
   "engines": {

@@ -14,7 +14,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <i class="el-icon-user-solid" />
+          <Iconify icon="ant-design:user-outlined" />
         </span>
         <el-input
           ref="username"
@@ -30,7 +30,7 @@
       <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
         <el-form-item prop="password">
           <span class="svg-container">
-            <i class="el-icon-view" />
+            <Iconify icon="ant-design:eye-invisible-outline" />
           </span>
           <el-input
             :key="passwordType"
@@ -46,7 +46,13 @@
             @keyup.enter="handleLogin"
           />
           <span class="show-pwd" @click="showPwd">
-            <i :class="passwordType === 'password' ? 'el-icon-s-check' : 'el-icon-view'" />
+            <Iconify
+              :icon="
+                passwordType === 'password'
+                  ? 'ant-design:eye-invisible-outline'
+                  : 'ant-design:eye-outline'
+              "
+            />
           </span>
         </el-form-item>
       </el-tooltip>
@@ -86,18 +92,20 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import SocialSign from './components/SocialSignin.vue';
+  import { validUsername } from '@/utils/validate';
+
   export default defineComponent({
     name: 'LoginIndex',
     components: { SocialSign },
     data() {
-      const validateUsername = (rule, value, callback) => {
-        // if (!validUsername(value)) {
-        //   callback(new Error('Please enter the correct user name'))
-        // } else {
-        //   callback();
-        // }
+      const validateUsername = (rule: any, value: any, callback: any) => {
+        if (!validUsername(value)) {
+          callback(new Error('Please enter the correct user name'));
+        } else {
+          callback();
+        }
       };
-      const validatePassword = (rule, value, callback) => {
+      const validatePassword = (rule: any, value: any, callback: any) => {
         if (value.length < 6) {
           callback(new Error('The password can not be less than 6 digits'));
         } else {
@@ -131,7 +139,7 @@
           if (valid) {
             this.loading = true;
             this.$store
-              .dispatch('user/login', this.loginForm)
+              .dispatch('userModule/login', this.loginForm)
               .then(() => {
                 this.$router.push({ path: this.redirect || '/', query: this.otherQuery });
                 this.loading = false;
