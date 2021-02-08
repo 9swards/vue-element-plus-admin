@@ -13,6 +13,6 @@ export default defineConfig({
   },
   plugins: [vue()],
   optimizeDeps: {
-    include: ['axios', 'mockjs'],
+    include: ['axios', 'mockjs', 'lodash'],
   },
 });

@@ -2,13 +2,13 @@
   <div class="social-signup-container">
     <div class="sign-btn" @click="wechatHandleClick('wechat')">
       <span class="wx-svg-container">
-        <Iconify icon="ant-design:wechat-outlined" style="font-size: 24px; color: white;" />
+        <Iconify icon="ant-design:wechat-outlined" style="font-size: 24px; color: white" />
       </span>
       WeChat
     </div>
     <div class="sign-btn" @click="tencentHandleClick('tencent')">
       <span class="qq-svg-container">
-        <Iconify icon="ant-design:qq-outlined" style="font-size: 24px; color: white;" />
+        <Iconify icon="ant-design:qq-outlined" style="font-size: 24px; color: white" />
       </span>
       QQ
     </div>

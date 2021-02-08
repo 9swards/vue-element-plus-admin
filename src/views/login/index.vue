@@ -60,19 +60,19 @@
       <el-button
         :loading="loading"
         type="primary"
-        style="width: 100%; margin-bottom: 30px;"
+        style="width: 100%; margin-bottom: 30px"
         @click.prevent="handleLogin"
       >
         Login
       </el-button>
 
-      <div style="position: relative;">
+      <div style="position: relative">
         <div class="tips">
           <span>Username : admin</span>
           <span>Password : any</span>
         </div>
         <div class="tips">
-          <span style="margin-right: 18px;">Username : editor</span>
+          <span style="margin-right: 18px">Username : editor</span>
           <span>Password : any</span>
         </div>
 

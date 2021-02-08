@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.31",
+    "lodash": "^4.17.20",
     "normalize.css": "^8.0.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3",
@@ -26,6 +27,7 @@
     "@iconify/json": "^1.1.299",
     "@iconify/vue": "^2.0.0-rc.2",
     "@ls-lint/ls-lint": "^1.9.2",
+    "@types/lodash": "^4.14.168",
     "@types/mockjs": "^1.0.3",
     "@types/node": "^14.14.25",
     "@types/webpack-env": "^1.16.0",
@@ -59,6 +61,7 @@
   },
   "lint-staged": {
     "*.js": [
+      "eslint --fix",
       "prettier --write"
     ],
     "*.ts?(x)": [
