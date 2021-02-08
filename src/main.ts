@@ -11,9 +11,4 @@ registerGlobComp(app);
 installRouter(app);
 installStore(app);
 
-import { mockXHR } from './mock';
-if (process.env.NODE_ENV === 'production') {
-  mockXHR();
-}
-
 app.mount('#app');
