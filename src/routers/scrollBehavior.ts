@@ -1,26 +1,5 @@
 // see https://github.com/vuejs/vue-router-next/blob/master/playground/scrollWaiter.ts
 import type { RouteLocationNormalized } from 'vue-router';
-// class ScrollQueue {
-//   private resolve: (() => void) | null = null;
-//   private promise: Promise<any> | null = null;
-
-//   add() {
-//     this.promise = new Promise((resolve) => {
-//       this.resolve = resolve as () => void;
-//     });
-//   }
-
-//   flush() {
-//     this.resolve && this.resolve();
-//     this.resolve = null;
-//     this.promise = null;
-//   }
-
-//   async wait() {
-//     await this.promise;
-//   }
-// }
-// const scrollWaiter = new ScrollQueue();
 
 /**
  * Handles the scroll behavior on route navigation
@@ -31,7 +10,7 @@ import type { RouteLocationNormalized } from 'vue-router';
  * @returns {(object|boolean)} Scroll position or `false`
  */
 // @ts-ignore
-export async function scrollBehavior(to, from, savedPosition) {
+export async function scrollBehavior(to, from: any, savedPosition) {
   // await scrollWaiter.wait();
   // Use predefined scroll behavior if defined, defaults to no scroll behavior
   const behavior = 'smooth';

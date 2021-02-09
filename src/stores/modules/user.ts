@@ -1,6 +1,7 @@
 import { Module } from 'vuex';
-import { RootStateTypes } from '@/stores/interface';
-import { UserStateTypes } from '@/stores/modules/interface';
+import router from '/@/routers';
+import { RootStateTypes } from '/@/stores/interface';
+import { UserStateTypes } from '/@/stores/modules/interface';
 
 const userModule: Module<UserStateTypes, RootStateTypes> = {
   namespaced: true,
@@ -9,10 +10,11 @@ const userModule: Module<UserStateTypes, RootStateTypes> = {
   },
   getters: {},
   mutations: {
-    login(state, payload) {
+    async login(state, payload) {
       console.log('login:' + payload);
       // mutate state
       state.name = payload;
+      await router.replace('/dashboard');
     },
   },
   actions: {

@@ -1,10 +1,10 @@
-import { AppRouteModule } from '@/routers/types';
-import Layout from '@/layout/index.vue';
+import { AppRouteModule } from '/@/routers/types';
+import Layout from '/@/layout/index.vue';
 export const basicRoutes: AppRouteModule[] = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/index.vue'),
+    component: () => import('/@/views/login/index.vue'),
     meta: {
       title: 'Login',
       ignoreAuth: true,
@@ -22,7 +22,7 @@ export const basicRoutes: AppRouteModule[] = [
       {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('/@/views/dashboard/index.vue'),
         meta: {
           title: 'dashboard',
         },

@@ -1,14 +1,22 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import { registerGlobComp } from './components/installGlobalComponent';
-import { installRouter } from '@/routers';
-import { installStore } from '@/stores';
-import '@/styles/index.scss';
+import router, { setupRouter } from '/@/routers';
+import { setupStore } from '/@/stores';
+import { registerGlobComp } from '/@/components/installGlobalComponent';
+import { isDevMode } from '/@/utils/env';
+
+import '/@/styles/index.scss';
 
 const app = createApp(App);
 
 registerGlobComp(app);
-installRouter(app);
-installStore(app);
+setupRouter(app);
+setupStore(app);
+router.isReady().then(() => {
+  app.mount('#app', true);
+});
 
-app.mount('#app');
+if (isDevMode()) {
+  app.config.performance = true;
+  window.__APP__ = app;
+}

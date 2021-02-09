@@ -14,7 +14,7 @@ const router = createRouter({
   scrollBehavior,
 });
 
-export function installRouter(app: App<Element>) {
+export function setupRouter(app: App<Element>) {
   app.use(router);
 }
 

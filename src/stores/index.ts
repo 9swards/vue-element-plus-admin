@@ -1,7 +1,7 @@
 import type { App, InjectionKey } from 'vue';
 import { createStore, Store, useStore as baseUseStore } from 'vuex';
-import userModule from '@/stores/modules/user';
-import { AllStateTypes, RootStateTypes } from '@/stores/interface';
+import userModule from '/@/stores/modules/user';
+import { AllStateTypes, RootStateTypes } from '/@/stores/interface';
 
 const store = createStore<RootStateTypes>({
   state: {
@@ -25,8 +25,8 @@ export function useStore<T = AllStateTypes>() {
   return baseUseStore<T>(key);
 }
 
-export function installStore(app: App<Element>) {
-  app.use(store);
+export function setupStore(app: App<Element>) {
+  app.use(store, key);
 }
 
 export default store;

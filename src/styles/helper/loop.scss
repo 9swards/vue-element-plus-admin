@@ -1,11 +1,11 @@
 @mixin loop($style-name, $tag-name, $i, $base-size, $max:10, $xy:none) {
   @for $next from $i through $max {
     @include fn1($style-name, $tag-name, $next, $base-size, $max, $xy);
-    //@include fn2($next, $style-name, $tag-name, $i, $base-size, $max, $xy);
-    //@include fn3($next, $style-name, $tag-name, $i, $base-size, $max, $xy);
-    //@include fn4($next, $style-name, $tag-name, $i, $base-size, $max, $xy);
-    //@include fn5($next, $style-name, $tag-name, $i, $base-size, $max, $xy);
-    //@include fn6($next, $style-name, $tag-name, $i, $base-size, $max, $xy);
+    @include fn2($style-name, $tag-name, $next, $base-size, $max, $xy);
+    @include fn3($style-name, $tag-name, $next, $base-size, $max, $xy);
+    @include fn4($style-name, $tag-name, $next, $base-size, $max, $xy);
+    @include fn5($style-name, $tag-name, $next, $base-size, $max, $xy);
+    @include fn6($style-name, $tag-name, $next, $base-size, $max, $xy);
   }
 }
 
@@ -18,7 +18,7 @@
   }
 }
 
-@mixin fn2($next, $style-name, $tag-name, $i, $base-size, $max, $xy) {
+@mixin fn2($style-name, $tag-name, $i, $base-size, $max, $xy) {
   @if ($xy == x) {
     $size: $base-size * $i;
 
@@ -30,12 +30,9 @@
       #{$tnr}: '#{$size}px';
     }
   }
-  //@else {
-  //  @include loop($style-name, $tag-name, $next, $base-size, $max, $xy);
-  //}
 }
 
-@mixin fn3($next, $style-name, $tag-name, $i, $base-size, $max, $xy) {
+@mixin fn3($style-name, $tag-name, $i, $base-size, $max, $xy) {
   @if ($xy == y) {
     $size: $base-size * $i;
 
@@ -47,12 +44,9 @@
       #{$tnb}: '#{$size}px';
     }
   }
-  //@else {
-  //  @include loop($style-name, $tag-name, $next, $base-size, $max, $xy);
-  //}
 }
 
-@mixin fn4($next, $style-name, $tag-name, $i, $base-size, $max, $xy) {
+@mixin fn4($style-name, $tag-name, $i, $base-size, $max, $xy) {
   @if ($xy == auto) {
     $tnt: '#{$tag-name}-top';
     $tnb: '#{$tag-name}-bottom';
@@ -67,7 +61,7 @@
   }
 }
 
-@mixin fn5($next, $style-name, $tag-name, $i, $base-size, $max, $xy) {
+@mixin fn5($style-name, $tag-name, $i, $base-size, $max, $xy) {
   @if ($xy == autoX) {
     $tnl: '#{$tag-name}-left';
     $tnr: '#{$tag-name}-right';
@@ -78,7 +72,7 @@
   }
 }
 
-@mixin fn6($next, $style-name, $tag-name, $i, $base-size, $max, $xy) {
+@mixin fn6($style-name, $tag-name, $i, $base-size, $max, $xy) {
   @if ($xy == autoY) {
     $tnt: '#{$tag-name}-top';
     $tnb: '#{$tag-name}-bottom';

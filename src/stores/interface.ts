@@ -1,4 +1,4 @@
-import { UserStateTypes } from '@/stores/modules/interface';
+import { UserStateTypes } from '/@/stores/modules/interface';
 
 export interface RootStateTypes {
   app: string;

@@ -1,5 +1,9 @@
 @import 'normalize.css/normalize.css';
 @import 'element-plus/lib/theme-chalk/display.css';
 
-@import './helper/distance.scss';
-@include distance();
+//@import './helper/distance.scss';
+//@include distance();
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

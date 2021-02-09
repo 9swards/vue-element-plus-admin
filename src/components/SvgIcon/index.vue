@@ -7,7 +7,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { isExternal } from '@/utils/validate';
+  import { isExternal } from '/@/utils/validate';
   export default defineComponent({
     name: 'SvgIcon',
     props: {
