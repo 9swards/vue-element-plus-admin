@@ -6,9 +6,7 @@ import antdIcons from '@iconify/json/json/ant-design.json';
 
 addCollection(antdIcons);
 
-import SvgIcon from './SvgIcon/index.vue';
-
-const compList: any[] = [SvgIcon];
+const compList: any[] = [];
 
 export function registerGlobComp(app: App) {
   app.component('Iconify', Icon);

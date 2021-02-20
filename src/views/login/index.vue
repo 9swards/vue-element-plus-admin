@@ -52,7 +52,7 @@
   import { defineComponent, reactive, ref, unref, toRaw } from 'vue';
   import { ElMessage } from 'element-plus';
   import logo from '/@/assets/images/logo.jpeg';
-  import { useStore } from '/@/stores';
+  import { useStore } from '/@/store';
 
   export default defineComponent({
     setup() {
