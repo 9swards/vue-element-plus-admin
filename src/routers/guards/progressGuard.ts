@@ -1,17 +1,17 @@
 import type { Router } from 'vue-router';
 
-import nProgress from 'nprogress';
+import NProgress from 'nprogress';
 
 export function createProgressGuard(router: Router) {
   router.beforeEach(async (to) => {
     if (to.meta.loaded) return true;
-    nProgress.start();
+    NProgress.start();
     return true;
   });
 
   router.afterEach(async (to) => {
     if (to.meta.loaded) return true;
-    nProgress.done();
+    NProgress.done();
     return true;
   });
 }
