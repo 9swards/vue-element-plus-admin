@@ -6,6 +6,16 @@ import {
 } from '/@/stores/interfaces';
 import { Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex';
 
+export enum GetterTypes {
+  GET_TITLE = `GET_TITLE`,
+}
+export enum MutationTypes {
+  SET_TITLE = `SET_TITLE`,
+}
+export enum ActionTypes {
+  ACT_TITLE = 'ACT_TITLE',
+}
+
 export type AppStoreModuleTypes<S = AppStateTypes> = Omit<
   VuexStore<S>,
   'commit' | 'getters' | 'dispatch'
