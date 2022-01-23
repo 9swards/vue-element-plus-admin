@@ -2,3 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint-staged
+
+npx --no-install lint-staged --allow-empty --edit "$1"
