@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "prettier": "prettier --write ./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}",
-    "commit": "git-cz"
+    "commitlint": "git-cz"
   },
   "dependencies": {
     "element-plus": "^1.3.0-beta.7",
