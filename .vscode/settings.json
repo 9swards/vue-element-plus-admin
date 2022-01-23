@@ -1,0 +1,7 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.formatOnSave": true, // 开启自动保存
+  "editor.defaultFormatter": "esbenp.prettier-vscode" // 默认格式化工具选择prettier
+}
