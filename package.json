@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
+    "lint-staged": "lint-staged --allow-empty",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "prettier": "prettier --write ./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}",
-    "commitlint": "git-cz"
+    "commitlint": "commitlint --config commitlint.config.js -e -V"
   },
   "dependencies": {
     "element-plus": "^1.3.0-beta.7",
