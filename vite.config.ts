@@ -1,7 +1,71 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
+export default defineConfig(async ({ command, mode }) => {
+  console.log(command, mode)
+  return {
+    envDir: './env',
+    envPrefix: 'NINE_',
+    server: {
+      port: 9527,
+      strictPort: true,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000/',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+          configure: (proxy, options) => {
+            console.log(proxy, options)
+          },
+        },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src'),
+        '#': resolve(__dirname, './'),
+      },
+    },
+    plugins: [
+      vue(),
+      vueJsx(),
+      AutoImport({
+        include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue$/,
+          /\.vue\?vue/, // .vue
+          /\.md$/, // .md
+        ],
+        imports: [
+          // presets
+          'vue',
+          'vue-router',
+          // custom
+          {
+            '@vueuse/core': [
+              // named imports
+              'useMouse', // import { useMouse } from '@vueuse/core',
+              // alias
+              ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+            ],
+            axios: [
+              // default imports
+              ['default', 'axios'], // import { default as axios } from 'axios',
+            ],
+          },
+        ],
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        dts: true,
+        resolvers: [ElementPlusResolver()],
+      }),
+    ],
+  }
 })

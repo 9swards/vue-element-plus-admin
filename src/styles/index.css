@@ -1,0 +1,24 @@
+/*! @import */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  overflow: hidden;
+}
+@layer utilities {
+  .transition-width {
+    transition-property: width;
+  }
+  .bg-menubar {
+    background-color: #001529;
+  }
+  .bg-logo {
+    background-color: #001529;
+  }
+  .flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
