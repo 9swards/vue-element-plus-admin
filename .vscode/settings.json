@@ -14,5 +14,5 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "css.lint.unknownAtRules": "ignore",
-  "stylelint.validate": ["vue"]
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"]
 }

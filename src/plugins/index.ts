@@ -1,7 +1,12 @@
 import { App } from 'vue'
-import elInstall from '@/plugins/element-plus'
 import 'nprogress/nprogress.css'
 
+const modules = import.meta.glob('./*.ts')
+
 export default (app: App<Element>): void => {
-  elInstall(app)
+  for (const path in modules) {
+    modules[path]().then((mod: any) => {
+      mod.install(app)
+    })
+  }
 }

@@ -8,7 +8,6 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(async ({ command, mode }) => {
-  console.log(command, mode)
   return {
     envDir: './env',
     envPrefix: 'NINE_',
@@ -20,9 +19,6 @@ export default defineConfig(async ({ command, mode }) => {
           target: 'http://localhost:3000/',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
-          configure: (proxy, options) => {
-            console.log(proxy, options)
-          },
         },
       },
     },
@@ -46,6 +42,7 @@ export default defineConfig(async ({ command, mode }) => {
           // presets
           'vue',
           'vue-router',
+          'vuex',
           // custom
           {
             '@vueuse/core': [
@@ -60,6 +57,11 @@ export default defineConfig(async ({ command, mode }) => {
             ],
           },
         ],
+        eslintrc: {
+          enabled: true, // Default `false`
+          filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+          globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+        },
         resolvers: [ElementPlusResolver()],
       }),
       Components({

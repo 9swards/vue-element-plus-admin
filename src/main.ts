@@ -4,10 +4,10 @@ import direct from '@/directives/actions'
 import install from '@/plugins'
 import router from '@/routers'
 import { store } from '@/stores/index'
-import '@/mocks'
-import '@/permission'
-
+import '@/routers/permission'
 import '@/styles/index.css'
+
+import '@/mocks'
 
 const app = createApp(App)
 direct(app)

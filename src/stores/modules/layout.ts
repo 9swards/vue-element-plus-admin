@@ -1,9 +1,9 @@
 import { login, loginParam, getRouterList } from '@/apis/layout'
 import { ILayout, IMenubarStatus, ITagsList, IMenubarList } from '@/types/store/layout'
-import { IState } from '@/types/store/index'
+import { IState } from '@/types'
 import { ActionContext } from 'vuex'
 import router from '@/routers/index'
-import { allowRouter } from '@/routers/index'
+import { whiteListRouter } from '@/routers/index'
 import { generatorDynamicRouter } from '@/routers/asyncRouter'
 
 const state: ILayout = {
@@ -18,12 +18,13 @@ const state: ILayout = {
   },
   // 标签栏
   tags: {
-    tagsList: [{ name: 'Workplace', title: '主页', path: '/Dashboard/Workplace', isActive: true }],
-    cachedViews: ['Workplace'],
+    tagsList: [{ name: 'Home', title: '主页', path: '/', isActive: true }],
+    cachedViews: ['Home'],
   },
-  ACCESS_TOKEN: localStorage.getItem('ACCESS_TOKEN') || '',
+  accessToken: localStorage.getItem('access-token') || '',
   isLoading: false,
 }
+
 const mutations = {
   changeCollapsed(state: ILayout): void {
     if (state.menubar.isPhone) {
@@ -32,6 +33,7 @@ const mutations = {
       state.menubar.status = state.menubar.status === IMenubarStatus.PCN ? IMenubarStatus.PCE : IMenubarStatus.PCN
     }
   },
+
   changeDeviceWidth(state: ILayout): void {
     if (document.body.offsetWidth < 768) {
       state.menubar.isPhone = true
@@ -41,6 +43,7 @@ const mutations = {
       state.menubar.status = IMenubarStatus.PCE
     }
   },
+
   // 切换导航，记录打开的导航
   changeTagNavList(state: ILayout, cRouter: IMenubarList): void {
     if (new RegExp(/\/redirect\//).test(cRouter.path)) return // 判断是否是重定向页面
@@ -59,6 +62,7 @@ const mutations = {
       state.tags.tagsList.push(tagsList)
     }
   },
+
   removeTagNav(state: ILayout, obj: { tagsList: ITagsList; cPath: string }): void {
     const index = state.tags.tagsList.findIndex((v) => v.path === obj.tagsList.path)
     if (state.tags.tagsList[index].path === obj.cPath && state.tags.tagsList.length > 1) {
@@ -71,6 +75,7 @@ const mutations = {
       mutations.removeCachedViews(state, obj.tagsList.name)
     }
   },
+
   removeOtherTagNav(state: ILayout, tagsList: ITagsList): void {
     state.tags.tagsList.splice(1, state.tags.tagsList.length - 1)
     state.tags.cachedViews.splice(1, state.tags.cachedViews.length - 1)
@@ -78,16 +83,19 @@ const mutations = {
     state.tags.cachedViews.push(tagsList.name)
     router.push({ path: tagsList.path })
   },
+
   removeAllTagNav(state: ILayout): void {
     state.tags.tagsList.splice(1, state.tags.tagsList.length - 1)
     state.tags.cachedViews.splice(1, state.tags.cachedViews.length - 1)
     router.push({ path: state.tags.tagsList[0].path })
   },
+
   // 添加缓存页面
   addCachedViews(state: ILayout, obj: { name: string; noCache: boolean }): void {
     if (obj.noCache || state.tags.cachedViews.includes(obj.name)) return
     state.tags.cachedViews.push(obj.name)
   },
+
   // 删除缓存页面
   removeCachedViews(state: ILayout, name: string): void {
     // 判断标签页是否还有该页面
@@ -100,21 +108,25 @@ const mutations = {
       }
     }
   },
+
   login(state: ILayout, token = ''): void {
-    state.ACCESS_TOKEN = token
-    localStorage.setItem('ACCESS_TOKEN', token)
+    state.accessToken = token
+    localStorage.setItem('access-token', token)
   },
+
   logout(state: ILayout): void {
-    state.ACCESS_TOKEN = ''
-    localStorage.removeItem('ACCESS_TOKEN')
-    router.push({ path: '/Login' })
+    state.accessToken = ''
+    localStorage.removeItem('access-token')
+    router.push({ name: 'Login' })
     // history.go(0)
   },
+
   setRoutes(state: ILayout, data: Array<IMenubarList>): void {
     state.menubar.menuList = data
   },
+
   concatAllowRoutes(state: ILayout): void {
-    allowRouter.reverse().forEach((v: IMenubarList) => state.menubar.menuList.unshift(v))
+    whiteListRouter.reverse().forEach((v: IMenubarList) => state.menubar.menuList.unshift(v))
   },
 }
 const actions = {
@@ -123,12 +135,13 @@ const actions = {
     const token = res.data.Data
     context.commit('login', token)
   },
-  async GenerateRoutes(): Promise<void> {
+  async generateRoutes(): Promise<void> {
     const res = await getRouterList()
     const { Data } = res.data
     generatorDynamicRouter(Data)
   },
 }
+
 const layoutState = {
   namespaced: true,
   state,

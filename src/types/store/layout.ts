@@ -20,7 +20,7 @@ export interface ILayout {
     tagsList: Array<ITagsList>
     cachedViews: Array<string>
   }
-  ACCESS_TOKEN: string
+  accessToken: string
   isLoading: boolean
 }
 export interface IMenubarList {

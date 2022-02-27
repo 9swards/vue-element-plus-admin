@@ -2,16 +2,8 @@ import { IMenubarList } from '@/types/store/layout'
 import { listToTree } from '@/utils/listToTree'
 import { store } from '@/stores/index'
 const components = {
-  Layout: () => import('@/layout/index.vue'),
+  Layout: () => import('@/layouts/default/index.vue'),
   404: () => import('@/views/error-pages/404.vue'),
-  //   Workplace: () => import('@/views/Dashboard/Workplace.vue'),
-  //   ProjectList: () => import('@/views/Project/ProjectList.vue'),
-  //   ProjectDetail: () => import('@/views/Project/ProjectDetail.vue'),
-  //   ProjectImport: () => import('@/views/Project/ProjectImport.vue'),
-  //   SecondNav: () => import('@/views/Nav/SecondNav/Index.vue'),
-  //   ThirdNav: () => import('@/views/Nav/SecondNav/ThirdNav/Index.vue'),
-  //   SecondText: () => import('@/views/Nav/SecondText/Index.vue'),
-  //   ThirdText: () => import('@/views/Nav/SecondText/ThirdText/Index.vue'),
 }
 
 const asyncRouter: Array<IMenubarList> = [

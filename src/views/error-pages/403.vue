@@ -1,5 +1,5 @@
 <template>
-  <div>404 page</div>
+  <div>NO AUTH</div>
 </template>
 
 <script lang="ts" setup></script>

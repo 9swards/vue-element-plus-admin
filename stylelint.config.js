@@ -1,27 +1,27 @@
 module.exports = {
+  configBasedir: '.',
+  plugins: ['stylelint-scss'],
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-prettier',
     'stylelint-config-standard-scss',
-    'stylelint-config-prettier-scss',
     'stylelint-config-recommended-vue',
     'stylelint-config-recommended-vue/scss',
+    'stylelint-config-prettier',
   ],
   rules: {
     indentation: [
       2,
       {
-        baseIndentLevel: 1,
+        baseIndentLevel: 0,
       },
     ],
     'declaration-block-semicolon-newline-after': 'always',
-  },
-  overrides: [
-    {
-      files: ['*.vue', '**/*.vue'],
-      rules: {
-        'unit-allowed-list': ['em', 'rem', 's'],
+    'color-no-invalid-hex': true,
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global'],
       },
-    },
-  ],
+    ],
+  },
 }

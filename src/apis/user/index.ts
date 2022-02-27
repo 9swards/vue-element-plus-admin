@@ -9,6 +9,7 @@ export interface LoginParam {
   username: string
   password: string
 }
+
 export function login(param: LoginParam): AxiosPromise {
   return request({
     url: api.login,
@@ -16,6 +17,7 @@ export function login(param: LoginParam): AxiosPromise {
     data: param,
   })
 }
+
 export function getRouterList(): AxiosPromise {
   return request({
     url: api.getRouterList,
