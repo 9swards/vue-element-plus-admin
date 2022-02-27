@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
-export default defineConfig(async ({ command, mode }) => {
+export default defineConfig(async () => {
   return {
     envDir: './env',
     envPrefix: 'NINE_',
@@ -58,7 +58,7 @@ export default defineConfig(async ({ command, mode }) => {
           },
         ],
         eslintrc: {
-          enabled: true, // Default `false`
+          enabled: true,
           filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
           globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
         },

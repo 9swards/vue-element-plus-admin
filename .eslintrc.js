@@ -52,10 +52,11 @@ module.exports = {
     'no-submodule-imports': ['off', '#', '@'],
     'no-implicit-dependencies': ['off', ['#', '@']],
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-console': 'error',
   },
   overrides: [
     {
-      files: ['src/views/**/index.vue', 'src/views/**/error-pages/*.vue'],
+      files: ['src/views/**/index.vue'],
       rules: {
         'vue/multi-word-component-names': 0,
       },

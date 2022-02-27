@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "prettier": "prettier --write ./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}",
     "lint-staged": "lint-staged --allow-empty",
-    "commit": "git cz",
+    "commit": "git add . && git cz",
     "commitlint": "commitlint --config commitlint.config.js -e -V",
     "lslint": "npx @ls-lint/ls-lint",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
