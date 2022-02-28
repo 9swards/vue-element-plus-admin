@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ElNotification } from 'element-plus'
 import { store } from '@/stores'
 import router from '@/routers'
 
@@ -29,8 +30,8 @@ const enterSubmit = (e: any) => {
   }
 }
 const onSubmit = async () => {
-  await store.dispatch('layout/login', { username: form.name, password: form.pwd })
-  router.replace({ path: '/' })
+  await store.dispatch('auth/LOGIN', { username: form.name, password: form.pwd })
+  await router.replace({ path: '/' })
   ElNotification({
     title: '欢迎',
     message: '欢迎回来',

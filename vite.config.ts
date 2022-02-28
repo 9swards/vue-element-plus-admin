@@ -9,7 +9,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(async () => {
   return {
-    envDir: './env',
+    envDir: 'env',
     envPrefix: 'NINE_',
     server: {
       port: 9527,
@@ -48,9 +48,9 @@ export default defineConfig(async () => {
             '@vueuse/core': [
               // named imports
               'useMouse', // import { useMouse } from '@vueuse/core',
-              // alias
-              ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
             ],
+            '@vueuse/integrations/useAxios': ['useAxios'],
+            '@vueuse/integrations/useNProgress': ['useNProgress'],
             axios: [
               // default imports
               ['default', 'axios'], // import { default as axios } from 'axios',

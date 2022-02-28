@@ -1,9 +1,6 @@
-import { login, loginParam, getRouterList } from '@/apis/layout'
 import { ILayout, IMenubarStatus, ITagsList, IMenubarList } from '@/types/store/layout'
-import { IState } from '@/types'
-import { ActionContext } from 'vuex'
-import router from '@/routers/index'
-import { whiteListRouter } from '@/routers/index'
+import router, { whiteListRouter } from '@/routers'
+import { getRouterList } from '@/apis/user'
 import { generatorDynamicRouter } from '@/routers/asyncRouter'
 
 const state: ILayout = {
@@ -12,16 +9,11 @@ const state: ILayout = {
     menuList: [],
     isPhone: document.body.offsetWidth < 768,
   },
-  // 用户信息
-  userInfo: {
-    name: '',
-  },
   // 标签栏
   tags: {
     tagsList: [{ name: 'Home', title: '主页', path: '/', isActive: true }],
     cachedViews: ['Home'],
   },
-  accessToken: localStorage.getItem('access-token') || '',
   isLoading: false,
 }
 
@@ -109,18 +101,6 @@ const mutations = {
     }
   },
 
-  login(state: ILayout, token = ''): void {
-    state.accessToken = token
-    localStorage.setItem('access-token', token)
-  },
-
-  logout(state: ILayout): void {
-    state.accessToken = ''
-    localStorage.removeItem('access-token')
-    router.push({ name: 'Login' })
-    // history.go(0)
-  },
-
   setRoutes(state: ILayout, data: Array<IMenubarList>): void {
     state.menubar.menuList = data
   },
@@ -130,15 +110,9 @@ const mutations = {
   },
 }
 const actions = {
-  async login(context: ActionContext<ILayout, IState>, param: loginParam): Promise<void> {
-    const res = await login(param)
-    const token = res.data.Data
-    context.commit('login', token)
-  },
-  async generateRoutes(): Promise<void> {
-    const res = await getRouterList()
-    const { Data } = res.data
-    generatorDynamicRouter(Data)
+  async GENERATE_ROUTES(): Promise<void> {
+    const res = getRouterList()
+    generatorDynamicRouter(res)
   },
 }
 

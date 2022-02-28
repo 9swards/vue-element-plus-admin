@@ -1,30 +1,27 @@
 import router from '@/routers'
 import { store } from '@/stores'
-import NProgress from 'nprogress'
-
-NProgress.configure({ showSpinner: false })
 
 const loginRoutePath = '/login'
 const defaultRoutePath = '/'
 
 router.beforeEach(async (to, from) => {
-  NProgress.start()
-  const { layout } = store.state
+  const { progress } = useNProgress(0)
+  const { auth, layout } = store.state
   // 判断当前是否在登陆页面
   if (to.path.toLocaleLowerCase() === loginRoutePath.toLocaleLowerCase()) {
-    NProgress.done()
-    if (layout.accessToken) {
+    progress.value = 0
+    if (auth.userInfo.accessToken) {
       return defaultRoutePath
     }
     return
   }
   // 判断是否登录
-  if (!layout.accessToken) {
+  if (!auth.userInfo.accessToken) {
     return loginRoutePath
   }
   // 判断是否还没添加过路由
   if (layout.menubar.menuList.length === 0) {
-    await store.dispatch('layout/generateRoutes')
+    await store.dispatch('layout/GENERATE_ROUTES')
     for (let i = 0; i < layout.menubar.menuList.length; i++) {
       router.addRoute(layout.menubar.menuList[i])
     }
@@ -39,5 +36,5 @@ router.beforeEach(async (to, from) => {
 })
 
 router.afterEach(() => {
-  NProgress.done() // finish progress bar
+  useNProgress(1)
 })

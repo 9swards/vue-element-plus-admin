@@ -16,7 +16,7 @@
       "#/*": ["./*"],
       "@/*": ["src/*"]
     },
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global", "vite/client"]
   },
   "include": ["./*.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

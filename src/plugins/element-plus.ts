@@ -8,11 +8,9 @@ const transName = (iconName: string) => {
   return `i-${kebabCase(iconName)}`
 }
 
-const install = (app: App<Element>): void => {
+export default (app: App<Element>): void => {
   Object.keys(ElIconModules).forEach((key) => {
     app.component(transName(key), ElIconModules[key as keyof typeof ElIconModules])
   })
   app.use(ElementPlus)
 }
-
-export { install }

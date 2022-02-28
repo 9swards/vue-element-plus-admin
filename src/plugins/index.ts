@@ -1,12 +1,10 @@
 import { App } from 'vue'
 import 'nprogress/nprogress.css'
 
-const modules = import.meta.glob('./*.ts')
+const modules = import.meta.globEager('./**/*.[t|j]s')
 
 export default (app: App<Element>): void => {
-  for (const path in modules) {
-    modules[path]().then((mod: any) => {
-      mod.install(app)
-    })
-  }
+  Object.keys(modules).forEach((value: any) => {
+    modules[value].default(app)
+  })
 }

@@ -11,16 +11,11 @@ export interface ILayout {
     menuList: Array<IMenubarList>
     isPhone: boolean
   }
-  // 用户信息
-  userInfo: {
-    name: string
-  }
   // 标签栏
   tags: {
     tagsList: Array<ITagsList>
     cachedViews: Array<string>
   }
-  accessToken: string
   isLoading: boolean
 }
 export interface IMenubarList {

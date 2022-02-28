@@ -1,8 +1,21 @@
-import request from '@/utils/request'
-import { AxiosPromise } from 'axios'
-const api = {
-  login: '/login',
-  getRouterList: '/getRouterList',
+import request from '@/apis'
+import { AxiosRequestConfig } from 'axios'
+import { useAxiosOption } from '@/apis'
+import { IMenubarList } from '@/types/store/layout'
+
+interface IApiRecord {
+  [key: string]: AxiosRequestConfig
+}
+
+const apiList: IApiRecord = {
+  login: {
+    url: '/login',
+    method: 'POST',
+  },
+  getRouterList: {
+    url: '/getRouterList',
+    method: 'GET',
+  },
 }
 
 export interface LoginParam {
@@ -10,17 +23,14 @@ export interface LoginParam {
   password: string
 }
 
-export function login(param: LoginParam): AxiosPromise {
-  return request({
-    url: api.login,
-    method: 'post',
-    data: param,
-  })
+export function login(body: LoginParam) {
+  const api: AxiosRequestConfig = apiList.login
+  const { data } = useAxios(api.url, Object.assign(api, { data: body }), request, useAxiosOption)
+  return data
 }
 
-export function getRouterList(): AxiosPromise {
-  return request({
-    url: api.getRouterList,
-    method: 'get',
-  })
+export function getRouterList(): Array<IMenubarList> {
+  const api: AxiosRequestConfig = apiList.login
+  const { data } = useAxios(api.url, api, request, useAxiosOption)
+  return data
 }

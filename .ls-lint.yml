@@ -10,6 +10,8 @@ ls:
     .test-d.ts: kebab-case
     .scss: kebab-case | PascalCase
     .spec.ts: camelCase | PascalCase
+  src/plugins/*:
+    .ts: camelCase | kebab-case
 
 ignore:
   - node_modules
