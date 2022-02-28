@@ -13,7 +13,6 @@ const request = axios.create({
 // 异常拦截处理器
 const errorHandler = (error: any) => {
   loading.close()
-  console.log('err' + error)
   ElNotification({
     title: '请求失败',
     message: error.message,

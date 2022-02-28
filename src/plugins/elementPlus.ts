@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import kebabCase from 'lodash/kebabCase'
+import kebabCase from 'lodash-es/kebabCase'
 import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import * as ElIconModules from '@element-plus/icons-vue'
